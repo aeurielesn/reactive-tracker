@@ -313,7 +313,7 @@ class TownHall extends Component {
     const level = this.props.level;
     return (
       <label>
-        Town Hall:
+        Builder Hall:
         <input
           value={level}
           type="number"
