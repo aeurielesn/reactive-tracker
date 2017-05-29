@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+
+var ghpages = require('gh-pages');
+var path = require('path');
+var child_process = require('child_process');
+
+function main(args) {
+  ghpages.publish(
+    path.join(path.dirname(__dirname), "build"),
+    {
+      user: {
+        name: child_process.execSync('git config user.name').toString().trim(),
+        email: child_process.execSync('git config user.email').toString().trim()
+      }
+    },
+    function(err) {
+      if (err) {
+        process.stderr.write(err.message + '\n');
+        return process.exit(1);
+      }
+      process.stderr.write('Published\n');
+    }
+  );
+}
+
+if (require.main === module) {
+  main(process.argv);
+}
+
+module.exports = main;
