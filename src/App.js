@@ -96,6 +96,14 @@ const specs = {
       "time": [0, 30, 1 * hours, 3 * hours, 6 * hours, 8 * hours],
       "availability": [0, 0, 0, 1, 1, 2],
     },
+    "gemMine": {
+      "name": "gemMine",
+      "displayName": "Gem Mine",
+      "levels": [0, 0, 0, 2, 4, 5],
+      "elixir": [0, 120000, 180000, 240000, 450000, 1000000],
+      "time": [0, 1 * hours, 2 * hours, 6 * hours, 8 * hours, 10 * hours],
+      "availability": [0, 0, 0, 1, 1, 1],
+    },
   },
   "Army": {
     "builderBarracks": {
