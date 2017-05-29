@@ -115,14 +115,18 @@ function Costs(props) {
     const troopLevel = props.village[troopSpecName] ? +props.village[troopSpecName] : 0;
     const starLaboratoryLevel = props.village.starLaboratory0 ? +props.village.starLaboratory0 : 0;
     const starLaboratoryMaxLevel = props.buildingsSpecs.Army.starLaboratory.levels[builderHallLevel];
+    const builderBarracksLevel = props.village.builderBarracks0 ? props.village.builderBarracks0 : 0;
+    const builderBarracksMinLevel = troopSpec.builderBarracks;
     const troopMaxLevel = +troopSpec.levels[Math.min(starLaboratoryLevel, starLaboratoryMaxLevel)];
-    if(troopSpec.gold || troopSpec.elixir || troopSpec.time) {
-      for (let i = troopLevel + 1; i <= troopMaxLevel; i += 1) {
-        // if(troopSpec.gold) troopsGold += troopSpec.gold[i];
-        if(troopSpec.elixir) troopsElixir += troopSpec.elixir[i];
-        if(troopSpec.time) {
-          troopsTime += troopSpec.time[i];
-          troopsGems += calculateGems(troopSpec.time[i]);
+    if(builderBarracksLevel >= builderBarracksMinLevel) {
+      if(troopSpec.gold || troopSpec.elixir || troopSpec.time) {
+        for (let i = troopLevel + 1; i <= troopMaxLevel; i += 1) {
+          // if(troopSpec.gold) troopsGold += troopSpec.gold[i];
+          if(troopSpec.elixir) troopsElixir += troopSpec.elixir[i];
+          if(troopSpec.time) {
+            troopsTime += troopSpec.time[i];
+            troopsGems += calculateGems(troopSpec.time[i]);
+          }
         }
       }
     }
